@@ -6,4 +6,4 @@ from rest_framework.views import APIView
 
 class PingView(APIView):
     def get(self, request, format=None):
-        return Response({"status": 200})
+        return Response({"status": "success"}, status=status.HTTP_200_OK)
