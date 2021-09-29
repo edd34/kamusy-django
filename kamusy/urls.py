@@ -28,5 +28,6 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('ping', PingView.as_view()),
+    path('', include('components.language.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
