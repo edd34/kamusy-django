@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'ping',
     'components.language',
-    'components.word'
+    'components.word',
+    'components.translation'
 ]
 
 MIDDLEWARE = [
