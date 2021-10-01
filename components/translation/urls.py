@@ -1,8 +1,8 @@
 from django.urls import path
-from components.language import views
+from components.translation import views
   
 urlpatterns = [
-    path('transations/',
+    path('translations/',
          views.translation_list,
          name = 'translation-list'),
     path('translations/<int:pk>/',

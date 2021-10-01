@@ -30,5 +30,6 @@ urlpatterns = [
     path('ping', PingView.as_view()),
     path('', include('components.language.urls')),
     path('', include('components.word.urls')),
+    path('', include('components.translation.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
