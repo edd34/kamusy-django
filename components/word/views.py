@@ -21,6 +21,7 @@ def word_list(request):
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
+        data["alpha_position"] = data["name"][0].lower()
         serializer = WordSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
