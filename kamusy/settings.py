@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'ping',
     'components.language',
     'components.word',
-    'components.translation'
+    'components.translation',
+    'utils'
 ]
 
 MIDDLEWARE = [
