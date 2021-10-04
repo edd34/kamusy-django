@@ -37,8 +37,8 @@ class Word(models.Model):
         'The Explanation'), help_text=('The description of the term being explained'), null=True)
     # translation
 
-    class Meta:
-        ordering = ('name',)
+    # class Meta:
+    #     ordering = ('name',)
 
     def __str__(self):
         return self.name
