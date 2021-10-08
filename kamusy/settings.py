@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'kamusy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# TODO use different environement and use env var
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
