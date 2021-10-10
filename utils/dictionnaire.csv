@@ -309,7 +309,7 @@ banane;sindza
 du pain;dipe
 gâteau;mhare
 viande;gnama
-viande;shirewu
+viande (volaille);shirewu
 épicerie;duka
 grand;bolé
 petit;titi
@@ -344,7 +344,7 @@ enfant;mwana mtsa
 maigrichon;mahondra
 zuki;aîné
 zuki;Grand frère
-zku;grande sœur
+zuki;grande sœur
 maman;mama
 papa;baba
 ;mama titi
@@ -448,8 +448,9 @@ prêter;uazima
 changer;ubadili
 fermer;ubala
 s'évanouir;ubama
-occuper, garder;ubarizi
-battre (instrument);ubiha
+occuper;ubarizi
+garder;ubarizi
+battre (un instrument de musique à percussion);ubiha
 ouvrir;ubua
 frapper;ububua
 se taire;uburiha
@@ -461,15 +462,19 @@ suivre;udunga
 accoucher;udzaa
 enterrer;udziha
 demander;udzisa
-cacher, dissimuler;udzitsa / utsitsa
-soulever, lever;udzuwa
+cacher;udzitsa / utsitsa
+dissimuler;udzitsa / utsitsa
+soulever;udzuwa
+lever;udzuwa
 servir;ueleshea
 comprendre;uelewa
-aller, marcher;uendra
+aller;uendra
+marcher;uendra
 mourir;ufa
 comprendre;ufahamu
 faire;ufanya
-penser, s'imaginer;ufikiri
+penser;ufikiri
+s'imaginer;ufikiri
 percer;uforoa
 laver le linge;ufua
 attacher;ufunga
@@ -490,25 +495,31 @@ finir;uhisa
 se baigner;uhoa
 tarder;uhoma
 laver;uhosa
-grandir, pousser;uhua
+grandir;uhua
+pousser;uhua
 construire;uhundra
 balayer;uhundza
-cuire, mûrir;uiva
+cuire;uiva
+mûrir;uiva
 venir;uja
 remplir;ujadza
 péter;ujamba
 être content;ujivia
-savoir, connaître;ujua
+savoir;ujua
+connaître;ujua
 être;uka
 aligner;ukabili
 avoir;ukana
 couper;ukatra
 s'asseoir;uketsi
 entendre;ukia
-accepter, convenir;ukiri
+accepter;ukiri
+accepter;ukubali
+convenir;ukiri
 être malade;ukodza
 tousser;ukohola
-gratter, râper;ukua
+gratter;ukua
+râper;ukua
 être d'accord;ukubali
 rassasier;ukura
 couper;ukutrua
@@ -519,7 +530,8 @@ dormir;ulala
 jeter;ulatsa
 sortir;ulawa
 être fatigué;ulemewa
-insulter, injurier;ulihidza
+insulter;ulihidza
+injurier;ulihidza
 cultiver;ulima
 attendre;ulindra
 laisser;ulisha
@@ -529,7 +541,8 @@ marier (homme);ulola
 se marier (femme);ulolowa
 pêcher;ulowa
 avaler;umedza
-détruire, abîmer;umenya
+détruire;umenya
+abîmer;umenya
 mendier;umia
 se rappeler;unahana
 jouer;ungadza
@@ -543,13 +556,15 @@ griller;uoha
 pourrir;uola
 voir;uona
 rêver;uora
-trouver, gagner;upara
+trouver;upara
+gagner;upara
 monter en voiture;upashiya
 casser;upasua
 allumer;upatsa
 cuisiner;upiha
 s'habiller;upindra
-arracher, cueillir;upua
+arracher;upua
+cueillir;upua
 tomber;upuliha
 faire tomber;upulisa
 ramper;uramba
@@ -566,18 +581,25 @@ sauter;uruka
 accrocher;urungiha
 piler;urwa
 aider;usaidia
-être coincé, être enfoncé;usama
-pouvoir, battre, gagner;ushindra
+être coincé;usama
+être enfoncé;usama
+pouvoir;ushindra
+battre;ushindra
+gagner;ushindra
+réussir;ushindra
 traverser;ushiya
 descendre;ushuka
 tenir;usika
 faire tenir;usikidza
-presser, appuyer;usinya
-lire, étudier;usoma
+presser;usinya
+appuyer;usinya
+lire;usoma
+étudier;usoma
 enseigner;usomedza
 coudre;usona
 sucer;usondza
-peigner, tresser (cheveux);usuka
+peigner;usuka
+tresser;usuka
 pousser;usukuma
 prier;uswali
 pardonner;uswamihi
@@ -586,7 +608,8 @@ se promener;utembeya
 imiter;utiba
 enlever;utoa
 s'enfuir;utrala
-mettre, verser;utria
+mettre;utria
+verser;utria
 vouloir;utsaha
 choisir;utsahua
 mâcher;utsana
@@ -598,12 +621,14 @@ espionner;utsungia
 étudier;utwali
 vendre;uudza
 donner;uva
-peindre / se maquiller;uvaha
+peindre;uvaha
+ se maquiller;uvaha
 envoyer;uveleha
 aimer;uvendza
 plier;uvera
 peser;uvima
-apporter, conduire;uvinga
+apporter;uvinga
+conduire;uvinga
 passer;uvira
 guérir;uvona
 brûler;uvua
@@ -618,7 +643,8 @@ tuer;uwula
 nager;uyela
 détester;uyenga
 rester;uzia
-effacer, éteindre;uzima
+effacer;uzima
+éteindre;uzima
 danser;uzina
 chercher;uzunguha
 Beau-père;Bamouhé

@@ -50,7 +50,8 @@ madame;viavy
 repas;hanigny
 pierre (une);vato
 menteur;mavandry
-fou;adala, adaladala 
+fou;adala 
+fou;adaladala
 doucement;môramôra
 difficile;sarotro
 facile;môra
@@ -228,8 +229,8 @@ ami;zalahy
 gars;zalahy
 pote;zalahy
 amant(e);amato
-efféminé;Sarimbavy, Sarambavy
-gay;Sarimbavy, Sarambavy
+efféminé;Sarimbavy / Sarambavy
+gay;Sarimbavy / Sarambavy
 ennemi;rafi
 rival;rafi
 bandits;fahavalo
@@ -313,7 +314,7 @@ Mardi  ;Talata
 Mercredi;Robia
 Jeudi;lahamisy
 Vendredi;Zoma[joma]
-Samedi;Botsy, Sabotsy
+Samedi;Botsy / Sabotsy
 Dimanche;Dimasy
 Corps ; neñy
 Corps ;  Vatañan teña
@@ -337,8 +338,9 @@ Gorge ; feho
 Cou ; vozoño
 Épaule ; avay
 Aisselle ; seliky
-Bras, main ; tañana
-Sein ; non
+Bras; tañana
+main; tañana
+Sein ;
 Tétons ; tsitsy
 Tétons ; tsitsiky nono
 Poitrine ; tratra
@@ -403,7 +405,7 @@ Colère ;  mankenjy
 Colère ; Héloko
 fâché; meloko
 fâché ;  mankenjy
-fâché , fâché ; Héloko, meloko , mankenjy
+fâché  ; Héloko
 Critiquer ; tsiko (holo)
 Critiquer ; tsiko (holo)
 Grondé ; šiaka
@@ -460,7 +462,8 @@ Brouillard ; Zavoño
 La pluie tombe ; Mahaleny latsaka
 Coucher de soleil ; zova tsôfotro
 cyclone ; Sikilôny
-Foudre, tonnerre ; Varatra
+Foudre ; Varatra
+tonnerre; Varatra
 Éclair ; Pelaka
 Tremblement de terre ; Horohoron-tany
 inondations ; Dôbo
