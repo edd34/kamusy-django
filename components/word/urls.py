@@ -8,4 +8,7 @@ urlpatterns = [
     path('words/<int:pk>/',
          views.word_detail,
          name='word-detail'),
+    path('find-words/<str:pattern>/<int:language_src_id>/',
+         views.find_word,
+         name='word-find'),
 ]

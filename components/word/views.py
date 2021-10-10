@@ -29,6 +29,18 @@ def word_list(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+def find_word(request, pattern=None, language_src_id=None,):
+    """
+    List all words, or create a new word
+    """
+    word = Word.objects.filter(
+        name__contains=pattern,
+        language__id=language_src_id)
+    serializer = WordSerializer(word, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'])
 def word_detail(request, pk):
     try:
