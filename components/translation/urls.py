@@ -11,4 +11,7 @@ urlpatterns = [
     path('translations/<str:pattern>/<int:language_src_id>/<int:language_dst_id>/',
          views.find_translations,
          name='translation-find'),
+    path('get-translation/<int:word_id>/<int:language_src_id>/<int:language_dst_id>/',
+         views.get_translation,
+         name='translation-get'),
 ]

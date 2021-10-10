@@ -73,3 +73,16 @@ def translation_detail(request, pk):
     elif request.method == 'DELETE':
         translation.delete()
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'OPTIONS'])
+def get_translation(request, word_id=None, language_src_id=None, language_dst_id=None):
+    """
+    List all words, or create a new word
+    """
+    translation = Translation.objects.filter(
+        word_source_id=word_id,
+        language_source_id=language_src_id,
+        language_destination_id=language_dst_id)
+    serializer = TranslationSerializer(translation, many=True)
+    return JsonResponse(serializer.data, safe=False)
