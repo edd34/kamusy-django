@@ -27,7 +27,7 @@ if os.environ.get("DJANGO_ENV") == "dev":
 elif os.environ.get("DJANGO_ENV") == "prod":
     SECRET_KEY = os.environ.get("SECRET")
     DEBUG = False
-    ALLOWED_HOSTS = ["edd34.github.io"]
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -149,8 +149,14 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',
-    'http://127.0.0.1:8080'
-)
+if os.environ.get("DJANGO_ENV") == "prod":
+    CORS_ORIGIN_ALLOW_ALL = False
+    CORS_ORIGIN_WHITELIST = (
+        'http://localhost:8080',
+        'http://127.0.0.1:8080'
+    )
+else:
+    CORS_ORIGIN_ALLOW_ALL = False
+    CORS_ORIGIN_WHITELIST = (
+        os.environ.get("CORS_WHITELIST_DOMAIN")
+    )

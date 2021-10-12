@@ -21,6 +21,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - DJANGO_ENV=prod
       - SECRET=${SECRET}
+      - CORS_WHITELIST_DOMAIN=${CORS_WHITELIST_DOMAIN}
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
