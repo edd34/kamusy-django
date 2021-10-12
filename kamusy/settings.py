@@ -152,11 +152,11 @@ REST_FRAMEWORK = {
 if os.environ.get("DJANGO_ENV") == "prod":
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = (
-        'http://localhost:8080',
-        'http://127.0.0.1:8080'
+        os.environ.get("CORS_WHITELIST_DOMAIN"),
     )
 else:
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = (
-        os.environ.get("CORS_WHITELIST_DOMAIN"),
+        'http://localhost:8080',
+        'http://127.0.0.1:8080'
     )
