@@ -27,7 +27,7 @@ if os.environ.get("DJANGO_ENV") == "dev":
 elif os.environ.get("DJANGO_ENV") == "prod":
     SECRET_KEY = os.environ.get("SECRET")
     DEBUG = False
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [os.environ.get("CORS_WHITELIST_DOMAIN")]
 
 
 # Application definition
