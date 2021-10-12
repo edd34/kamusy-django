@@ -158,5 +158,5 @@ if os.environ.get("DJANGO_ENV") == "prod":
 else:
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = (
-        os.environ.get("CORS_WHITELIST_DOMAIN")
+        os.environ.get("CORS_WHITELIST_DOMAIN"),
     )
