@@ -20,6 +20,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - DJANGO_ENV=prod
+      - SECRET=${SECRET}
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
