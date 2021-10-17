@@ -76,6 +76,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+### API doc
+
+The documentation of the public API is available under doc folder : [API.md](doc/API.md)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
