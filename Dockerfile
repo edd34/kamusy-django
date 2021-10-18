@@ -11,6 +11,6 @@ COPY ping /code/
 COPY quickstart /code/
 COPY utils /code/
 COPY manage.py /code/
-RUN python3 manage.py makemigrations --no-input
-RUN python3 manage.py migrate --no-input
-RUN python3 manage.py importdb
+# RUN python3 manage.py makemigrations --no-input
+# RUN python3 manage.py migrate --no-input
+# RUN python3 manage.py importdb
