@@ -27,7 +27,7 @@ router.register(r'groups', views.GroupViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('ping', PingView.as_view()),
+    path('ping/', PingView.as_view()),
     path('', include('components.language.urls')),
     path('', include('components.word.urls')),
     path('', include('components.translation.urls')),
