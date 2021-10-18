@@ -5,8 +5,11 @@ urlpatterns = [
     path('languages/',
          views.language_list,
          name = 'language-list'),
-    path('languages/<int:pk>/',
-         views.language_detail,
-         name = 'language-detail'),
+     path('add-language/',
+         views.add_language,
+         name = 'add-language'),
+#     path('languages/<int:pk>/',
+#          views.language_detail,
+#          name = 'language-detail'),
 
 ]
