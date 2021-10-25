@@ -29,11 +29,11 @@ def translation_list(request):
 def create_translation(request):
     data = JSONParser().parse(request)
     serializer = AddTranslationSerializerFromWord(data=data)
-    language_source = Language.objects.get(
-        id=serializer.data['language_source'])
-    language_destination = Language.objects.get(
-        id=serializer.data['language_destination'])
     if serializer.is_valid():
+        language_source = Language.objects.get(
+            id=serializer.data['language_source'])
+        language_destination = Language.objects.get(
+            id=serializer.data['language_destination'])
         word_source = Word.objects.get_or_create(
             name=serializer.data['word_source_name'], language_id=serializer.data['language_source'])
         word_destination = Word.objects.get_or_create(
