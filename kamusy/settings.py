@@ -21,11 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-if os.environ.get("DJANGO_ENV") == "dev":
-    SECRET_KEY = 'django-insecure-9(z-y=n)6t8g$4dlcal_jjh4tghm@#--5v3mwn3iu-x!kn67_z'
-    DEBUG = True
-    ALLOWED_HOSTS = []
-elif os.environ.get("DJANGO_ENV") == "prod":
+SECRET_KEY = 'django-insecure-9(z-y=n)6t8g$4dlcal_jjh4tghm@#--5v3mwn3iu-x!kn67_z'
+DEBUG = True
+ALLOWED_HOSTS = []
+
+if os.environ.get("DJANGO_ENV") == "prod":
     SECRET_KEY = os.environ.get("SECRET")
     DEBUG = False
     ALLOWED_HOSTS = [os.environ.get("CORS_WHITELIST_DOMAIN")]
@@ -151,17 +151,17 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 }
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
+]
+
 if os.environ.get("DJANGO_ENV") == "prod":
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = (
         os.environ.get("CORS_WHITELIST_DOMAIN"),
     )
-else:
-    CORS_ORIGIN_ALLOW_ALL = False
-    CORS_ORIGIN_WHITELIST = [
-        'http://localhost:8080',
-        'http://127.0.0.1:8080'
-    ]
 
 
 SIMPLE_JWT = {
