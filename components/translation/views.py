@@ -23,20 +23,25 @@ def translation_list(request):
     serializer = GetTranslationSerializer(translation, many=True)
     return JsonResponse(serializer.data, safe=False)
 
+
 @api_view(['POST', 'OPTIONS'])
 @permission_classes((IsAuthenticated, ))
 def create_translation(request):
     data = JSONParser().parse(request)
     serializer = AddTranslationSerializerFromWord(data=data)
+    language_source = Language.objects.get(
+        id=serializer.data['language_source'])
+    language_destination = Language.objects.get(
+        id=serializer.data['language_destination'])
     if serializer.is_valid():
-        language_source = Language.objects.get(id=serializer.data['language_source'])
-        language_destination = Language.objects.get(id=serializer.data['language_destination'])
-        word_source = Word.objects.get_or_create(name=serializer.data['word_source_name'], language_id=serializer.data['language_source'])
-        word_destination = Word.objects.get_or_create(name=serializer.data['word_destination_name'],language_id=serializer.data['language_destination'])
+        word_source = Word.objects.get_or_create(
+            name=serializer.data['word_source_name'], language_id=serializer.data['language_source'])
+        word_destination = Word.objects.get_or_create(
+            name=serializer.data['word_destination_name'], language_id=serializer.data['language_destination'])
         result = Translation.objects.get_or_create(word_source=word_source[0],
-                                          language_source=language_source,
-                                          word_destination=word_destination[0],
-                                          language_destination=language_destination)
+                                                   language_source=language_source,
+                                                   word_destination=word_destination[0],
+                                                   language_destination=language_destination)
         res = Translation.objects.get(pk=result[0].pk)
         result_serializer = GetTranslationSerializer(res)
         return JsonResponse(result_serializer.data, status=status.HTTP_200_OK)
@@ -77,8 +82,8 @@ def translation_detail(request, pk):
                             status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'PATCH':
         serializer = GetTranslationSerializer(translation,
-                                           data=request.data,
-                                           partial=True)
+                                              data=request.data,
+                                              partial=True)
 
         if serializer.is_valid():
             serializer.save()
