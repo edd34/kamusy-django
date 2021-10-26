@@ -34,6 +34,7 @@ if os.environ.get("DJANGO_ENV") == "prod":
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -23,7 +23,6 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
@@ -32,6 +31,7 @@ router.register(r'groups', views.GroupViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
+    path('admin/', admin.site.urls),
     path('ping/', PingView.as_view()),
     path('', include('components.language.urls')),
     path('', include('components.word.urls')),
