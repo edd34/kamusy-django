@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'components.language',
     'components.word',
     'components.translation',
-    'utils'
+    'utils',
+    'components.users'
 ]
 
 MIDDLEWARE = [
@@ -168,3 +169,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=4),
 }
+
+# AUTHENTICATION_BACKENDS = [
+#     'components.authentification.EmailBackend.EmailBackend']
+
+AUTH_USER_MODEL = 'users.CustomUser'
