@@ -161,7 +161,7 @@ CORS_ORIGIN_WHITELIST = [
 if os.environ.get("DJANGO_ENV") == "prod":
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = (
-        os.environ.get("CORS_WHITELIST_DOMAIN"),
+        "http://kamusy.yt:8080",
     )
 
 
