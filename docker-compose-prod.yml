@@ -22,7 +22,10 @@ services:
       - DJANGO_ENV=prod
       - SECRET=${SECRET}
       - CORS_WHITELIST_DOMAIN=${CORS_WHITELIST_DOMAIN}
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --workers=4 \
+      --log-file=/var/log/kamusy/gunicorn.log \
+      --bind=127.0.0.1:8000 --bind=[::1]:8000 \
+      kamusy.wsgi:application
     volumes:
       - .:/code
     ports:
