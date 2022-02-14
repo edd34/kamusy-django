@@ -25,11 +25,6 @@ SECRET_KEY = 'django-insecure-9(z-y=n)6t8g$4dlcal_jjh4tghm@#--5v3mwn3iu-x!kn67_z
 DEBUG = True
 ALLOWED_HOSTS = []
 
-if os.environ.get("DJANGO_ENV") == "prod":
-    SECRET_KEY = os.environ.get("SECRET")
-    DEBUG = False
-    ALLOWED_HOSTS = [os.environ.get("CORS_WHITELIST_DOMAIN")]
-
 
 # Application definition
 
@@ -163,6 +158,9 @@ if os.environ.get("DJANGO_ENV") == "prod":
     CORS_ORIGIN_WHITELIST = (
         "https://kamusy.yt",
     )
+    SECRET_KEY = os.environ.get("SECRET")
+    DEBUG = False
+    ALLOWED_HOSTS = ["kamusy.yt", "localhost", "127.0.0.1"]
 
 
 SIMPLE_JWT = {

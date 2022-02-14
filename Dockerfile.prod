@@ -2,8 +2,8 @@
 FROM python:3.8
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
-COPY /etc/letsencrypt/live/kamusy.yt/fullchain.pem /etc/letsencrypt/live/kamusy.yt/fullchain.pem
-COPY /etc/letsencrypt/live/kamusy.yt/fullchain.pem /etc/letsencrypt/live/kamusy.yt/privkey.pem
+COPY /etc/letsencrypt/live/ /etc/letsencrypt/live/
+COPY /etc/letsencrypt/live/ /etc/letsencrypt/live/
 COPY .env /code/
 COPY requirements.txt /code/
 RUN pip install --upgrade pip
