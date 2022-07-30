@@ -9,8 +9,9 @@ import numpy as np
 
 from utils.parse_dict import get_dict_kibushi, get_dict_mahorais
 
+
 class Command(BaseCommand):
-    help = 'import database'
+    help = "import database"
 
     def handle(self, *args, **kwargs):
         df = get_dict_mahorais()
@@ -21,19 +22,47 @@ class Command(BaseCommand):
         kibushi = Language.objects.get_or_create(name="kibushi")
 
         res = Language.objects.all()
-        print(res.values_list('pk', flat=True))
+        print(res.values_list("pk", flat=True))
 
         def create_translation_mahorais_fr(row):
-            word_mahorais = Word.objects.get_or_create(name=row["mahorais"], language=mahorais[0])
-            word_francais = Word.objects.get_or_create(name=row["français"], language=francais[0])
-            Translation.objects.get_or_create(word_source=word_mahorais[0], language_source=mahorais[0], word_destination=word_francais[0], language_destination=francais[0])
-            Translation.objects.get_or_create(word_source=word_francais[0], language_source=francais[0], word_destination=word_mahorais[0], language_destination=mahorais[0])
+            word_mahorais = Word.objects.get_or_create(
+                name=row["mahorais"], language=mahorais[0]
+            )
+            word_francais = Word.objects.get_or_create(
+                name=row["français"], language=francais[0]
+            )
+            Translation.objects.get_or_create(
+                word_source=word_mahorais[0],
+                language_source=mahorais[0],
+                word_destination=word_francais[0],
+                language_destination=francais[0],
+            )
+            Translation.objects.get_or_create(
+                word_source=word_francais[0],
+                language_source=francais[0],
+                word_destination=word_mahorais[0],
+                language_destination=mahorais[0],
+            )
 
         def create_translation_kibushi_fr(row):
-            word_kibushi = Word.objects.get_or_create(name=row["kibushi"], language=kibushi[0])
-            word_francais = Word.objects.get_or_create(name=row["français"], language=francais[0])
-            Translation.objects.get_or_create(word_source=word_kibushi[0], language_source=kibushi[0], word_destination=word_francais[0], language_destination=francais[0])
-            Translation.objects.get_or_create(word_source=word_francais[0], language_source=francais[0], word_destination=word_kibushi[0], language_destination=kibushi[0])
+            word_kibushi = Word.objects.get_or_create(
+                name=row["kibushi"], language=kibushi[0]
+            )
+            word_francais = Word.objects.get_or_create(
+                name=row["français"], language=francais[0]
+            )
+            Translation.objects.get_or_create(
+                word_source=word_kibushi[0],
+                language_source=kibushi[0],
+                word_destination=word_francais[0],
+                language_destination=francais[0],
+            )
+            Translation.objects.get_or_create(
+                word_source=word_francais[0],
+                language_source=francais[0],
+                word_destination=word_kibushi[0],
+                language_destination=kibushi[0],
+            )
 
         df.apply(lambda x: create_translation_mahorais_fr(x), axis=1)
         df1.apply(lambda x: create_translation_kibushi_fr(x), axis=1)

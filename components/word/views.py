@@ -9,17 +9,17 @@ from components.word.models import Word
 from components.word.serializers import WordSerializer
 
 
-@api_view(['GET', 'POST', 'OPTIONS'])
+@api_view(["GET", "POST", "OPTIONS"])
 def word_list(request):
     """
     List all words, or create a new word
     """
-    if request.method == 'GET':
+    if request.method == "GET":
         language = Word.objects.all()
         serializer = WordSerializer(language, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-    elif request.method == 'POST':
+    elif request.method == "POST":
         data = JSONParser().parse(request)
         data["alpha_position"] = data["name"][0].lower()
         serializer = WordSerializer(data=data)
@@ -29,19 +29,21 @@ def word_list(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
-def find_word(request, pattern=None, language_src_id=None,):
+@api_view(["GET"])
+def find_word(
+    request,
+    pattern=None,
+    language_src_id=None,
+):
     """
     List all words, or create a new word
     """
-    word = Word.objects.filter(
-        name__contains=pattern,
-        language__id=language_src_id)
+    word = Word.objects.filter(name__contains=pattern, language__id=language_src_id)
     serializer = WordSerializer(word, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def find_word_v2(request, pattern=None, language_src_id=None, language_dst_id=None):
     """
     List all words, or create a new word
@@ -49,42 +51,38 @@ def find_word_v2(request, pattern=None, language_src_id=None, language_dst_id=No
     word = Translation.objects.filter(
         word_source__name__contains=pattern,
         language_source__id=language_src_id,
-        language_destination__id=language_dst_id
+        language_destination__id=language_dst_id,
     )
     serializer = FindWordv2_Serializer(word, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
-@api_view(['GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'])
+@api_view(["GET", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def word_detail(request, pk):
     try:
         word = Word.objects.get(pk=pk)
     except Word.DoesNotExist:
         return JsonResponse(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
+    if request.method == "GET":
         serializer = WordSerializer(word)
         return JsonResponse(serializer.data)
 
-    elif request.method == 'PUT':
+    elif request.method == "PUT":
         serializer = WordSerializer(word, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors,
-                            status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'PATCH':
-        serializer = WordSerializer(word,
-                                    data=request.data,
-                                    partial=True)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "PATCH":
+        serializer = WordSerializer(word, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
-        return JsonResponse({}, serializer.errors,
-                            status=status.HTTP_400_BAD_REQUEST)
+        return JsonResponse({}, serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    elif request.method == "DELETE":
         word.delete()
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)

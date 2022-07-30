@@ -9,19 +9,55 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('language', '0001_initial'),
-        ('word', '0001_initial'),
+        ("language", "0001_initial"),
+        ("word", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Translation',
+            name="Translation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='l_destination', to='language.language')),
-                ('language_source', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='l_source', to='language.language')),
-                ('word_destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='w_destination', to='word.word')),
-                ('word_source', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='w_source', to='word.word')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="l_destination",
+                        to="language.language",
+                    ),
+                ),
+                (
+                    "language_source",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="l_source",
+                        to="language.language",
+                    ),
+                ),
+                (
+                    "word_destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="w_destination",
+                        to="word.word",
+                    ),
+                ),
+                (
+                    "word_source",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="w_source",
+                        to="word.word",
+                    ),
+                ),
             ],
         ),
     ]

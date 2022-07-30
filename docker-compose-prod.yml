@@ -24,7 +24,7 @@ services:
       - DJANGO_ENV=prod
       - SECRET=${SECRET}
       - CORS_WHITELIST_DOMAIN=${CORS_WHITELIST_DOMAIN}
-    command: gunicorn kamusy.wsgi:application --workers=4 --bind=127.0.0.1:8000 --certfile=/etc/letsencrypt/live/kamusy.yt/fullchain.pem --keyfile=/etc/letsencrypt/live/kamusy.yt/privkey.pem
+    command: gunicorn kamusy.wsgi:application --workers=8 --bind=0.0.0.0:8000
     volumes:
       - .:/code
     ports:

@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class WordConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'components.word'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "components.word"

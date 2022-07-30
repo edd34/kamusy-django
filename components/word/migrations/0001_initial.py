@@ -9,21 +9,79 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('language', '0001_initial'),
+        ("language", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Word',
+            name="Word",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150)),
-                ('alpha_position', models.CharField(choices=[('a', 'a'), ('b', 'b'), ('c', 'c'), ('d', 'd'), ('e', 'e'), ('f', 'f'), ('g', 'g'), ('h', 'h'), ('i', 'i'), ('j', 'j'), ('k', 'k'), ('l', 'l'), ('m', 'm'), ('n', 'n'), ('o', 'o'), ('p', 'p'), ('q', 'q'), ('r', 'r'), ('s', 's'), ('t', 't'), ('u', 'u'), ('v', 'v'), ('w', 'w'), ('x', 'x'), ('y', 'y'), ('z', 'z')], db_index=True, help_text='Show this entry under which Alphabet position', max_length=2, verbose_name='Alphabet Position')),
-                ('description', models.TextField(blank=True, help_text='The description of the term being explained', null=True, verbose_name='The Explanation')),
-                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='language.language')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=150)),
+                (
+                    "alpha_position",
+                    models.CharField(
+                        choices=[
+                            ("a", "a"),
+                            ("b", "b"),
+                            ("c", "c"),
+                            ("d", "d"),
+                            ("e", "e"),
+                            ("f", "f"),
+                            ("g", "g"),
+                            ("h", "h"),
+                            ("i", "i"),
+                            ("j", "j"),
+                            ("k", "k"),
+                            ("l", "l"),
+                            ("m", "m"),
+                            ("n", "n"),
+                            ("o", "o"),
+                            ("p", "p"),
+                            ("q", "q"),
+                            ("r", "r"),
+                            ("s", "s"),
+                            ("t", "t"),
+                            ("u", "u"),
+                            ("v", "v"),
+                            ("w", "w"),
+                            ("x", "x"),
+                            ("y", "y"),
+                            ("z", "z"),
+                        ],
+                        db_index=True,
+                        help_text="Show this entry under which Alphabet position",
+                        max_length=2,
+                        verbose_name="Alphabet Position",
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(
+                        blank=True,
+                        help_text="The description of the term being explained",
+                        null=True,
+                        verbose_name="The Explanation",
+                    ),
+                ),
+                (
+                    "language",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="language.language",
+                    ),
+                ),
             ],
             options={
-                'ordering': ('name',),
+                "ordering": ("name",),
             },
         ),
     ]

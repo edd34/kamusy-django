@@ -16,12 +16,14 @@ from utils.parse_dict import get_dict_kibushi, get_dict_mahorais
 
 
 class Command(BaseCommand):
-    help = 'export database'
+    help = "export database"
 
     def handle(self, *args, **kwargs):
 
-        filename = str(datetime.datetime.now().timestamp()
-                       ).replace(".", "_") + "_export_db.csv"
+        filename = (
+            str(datetime.datetime.now().timestamp()).replace(".", "_")
+            + "_export_db.csv"
+        )
 
         translation = Translation.objects.all()
         translation_s = GetTranslationSerializer(translation, many=True)
