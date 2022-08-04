@@ -7,6 +7,7 @@ from components.translation.models import Translation
 from components.translation.serializers import FindWordv2_Serializer
 from components.word.models import Word
 from components.word.serializers import WordSerializer
+import random
 
 
 @api_view(["GET", "POST", "OPTIONS"])
@@ -86,3 +87,22 @@ def word_detail(request, pk):
     elif request.method == "DELETE":
         word.delete()
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["GET", "OPTIONS"])
+def mixed_word(request):
+    """
+    List all words, or create a new word
+    """
+    if request.method == "GET":
+        word = Word.objects.filter(language__name="mahorais")
+        serializer = WordSerializer(word, many=True)
+        _data = serializer.data
+        result = list(filter(lambda x: _is_acceptable(x), _data))
+        data = random.sample(result, 10)
+        return JsonResponse(data, safe=False)
+
+
+def _is_acceptable(_word):
+    word = dict(_word).get("name")
+    return word.isalnum() and len(word) <= 10

@@ -14,4 +14,9 @@ urlpatterns = [
         views.find_word_v2,
         name="word-find-2",
     ),
+    path(
+        "api/mixed_word",
+        views.mixed_word,
+        name="mixed-word",
+    ),
 ]
