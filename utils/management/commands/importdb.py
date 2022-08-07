@@ -1,12 +1,11 @@
-from django.core.management.base import BaseCommand
-from django.core.management import call_command
-from components.word.models import Word
-from components.translation.models import Translation
-from components.language.models import Language
-
-import pandas as pd
 import numpy as np
+import pandas as pd
+from django.core.management import call_command
+from django.core.management.base import BaseCommand
 
+from components.language.models import Language
+from components.translation.models import Translation
+from components.word.models import Word
 from utils.parse_dict import get_dict_kibushi, get_dict_mahorais
 
 

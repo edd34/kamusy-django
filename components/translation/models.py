@@ -1,7 +1,7 @@
-from components.language.models import Language
 from django.db import models
-from components.word.models import Word
+
 from components.language.models import Language
+from components.word.models import Word
 
 
 class Translation(models.Model):

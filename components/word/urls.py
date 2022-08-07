@@ -1,4 +1,5 @@
 from django.urls import path
+
 from components.word import views
 
 urlpatterns = [
