@@ -98,12 +98,12 @@ def word_detail(request, pk):
 
 
 @api_view(["GET", "OPTIONS"])
-def mixed_word(request):
+def mixed_word(request, language):
     """
     List all words, or create a new word
     """
     if request.method == "GET":
-        word = Word.objects.filter(language__name="kibushi")
+        word = Word.objects.filter(language__name=language)
         serializer = WordSerializer(word, many=True)
         _data = serializer.data
         result = list(filter(lambda x: _is_acceptable(x), _data))

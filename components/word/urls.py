@@ -16,7 +16,7 @@ urlpatterns = [
         name="word-find-2",
     ),
     path(
-        "api/mixed_word",
+        "api/mixed_word/<str:language>/",
         views.mixed_word,
         name="mixed-word",
     ),
