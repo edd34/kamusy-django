@@ -66,6 +66,21 @@ def find_word_v2(request, pattern=None, language_src_id=None, language_dst_id=No
 
 
 @cache_page(60 * 60 * 24)
+@api_view(["GET"])
+def find_word_by_name(request, pattern=None, language_src=None, language_dst=None):
+    """
+    List all words, or create a new word
+    """
+    word = Translation.objects.filter(
+        word_source__name__contains=pattern,
+        language_source__name=language_src,
+        language_destination__name=language_dst,
+    )
+    serializer = FindWordv2_Serializer(word, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def word_detail(request, pk):
     try:

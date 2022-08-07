@@ -16,6 +16,11 @@ urlpatterns = [
         name="word-find-2",
     ),
     path(
+        "api/find-words-3/<str:pattern>/<str:language_src>/<str:language_dst>/",
+        views.find_word_by_name,
+        name="word-find-3",
+    ),
+    path(
         "api/mixed_word/<str:language>/",
         views.mixed_word,
         name="mixed-word",
