@@ -11,8 +11,11 @@ from components import language
 from components.language.models import Language
 from components.translation.models import Translation
 from components.translation.serializers import (
-    AddTranslationSerializerFromWord, GetTranslationSerializer)
+    AddTranslationSerializerFromWord,
+    GetTranslationSerializer,
+)
 from components.word.models import Word
+from django.views.decorators.cache import cache_page
 
 
 @cache_page(60 * 60 * 24)

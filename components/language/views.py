@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from components.language.models import Language
 from components.language.serializers import LanguageSerializer
+from django.views.decorators.cache import cache_page
 
 
 @cache_page(60 * 60 * 24)
