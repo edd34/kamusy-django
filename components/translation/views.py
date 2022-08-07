@@ -1,22 +1,21 @@
+from typing import OrderedDict
+
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404
+from rest_framework import serializers, status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
+
 from components import language
 from components.language.models import Language
 from components.translation.models import Translation
-from typing import OrderedDict
-from django.http import HttpResponse, JsonResponse
-from rest_framework.decorators import api_view
-from rest_framework import serializers, status
-from rest_framework.parsers import JSONParser
-from components.translation.models import Translation
 from components.translation.serializers import (
-    GetTranslationSerializer,
-    AddTranslationSerializerFromWord,
-)
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import permission_classes
+    AddTranslationSerializerFromWord, GetTranslationSerializer)
 from components.word.models import Word
-from django.shortcuts import get_object_or_404
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def translation_list(request):
     """
@@ -57,6 +56,7 @@ def create_translation(request):
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def find_translations(
     request, pattern=None, language_src_id=None, language_dst_id=None
@@ -73,6 +73,7 @@ def find_translations(
     return JsonResponse(serializer.data, safe=False)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def translation_detail(request, pk):
     try:
@@ -106,6 +107,7 @@ def translation_detail(request, pk):
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def get_translation(request, word_id=None, language_src_id=None, language_dst_id=None):
     """

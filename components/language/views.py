@@ -1,13 +1,14 @@
 from django.http import HttpResponse, JsonResponse
-from rest_framework.decorators import api_view
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated
+
 from components.language.models import Language
 from components.language.serializers import LanguageSerializer
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import permission_classes
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def language_list(request):
     """

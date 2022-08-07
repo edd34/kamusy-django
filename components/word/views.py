@@ -1,15 +1,20 @@
+import random
 from typing import OrderedDict
+
 from django.http import HttpResponse, JsonResponse
-from rest_framework.decorators import api_view
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
+
 from components.translation.models import Translation
 from components.translation.serializers import FindWordv2_Serializer
 from components.word.models import Word
 from components.word.serializers import WordSerializer
-import random
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "POST", "OPTIONS"])
 def word_list(request):
     """
@@ -30,6 +35,7 @@ def word_list(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET"])
 def find_word(
     request,
@@ -44,6 +50,7 @@ def find_word(
     return JsonResponse(serializer.data, safe=False)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET"])
 def find_word_v2(request, pattern=None, language_src_id=None, language_dst_id=None):
     """
@@ -58,6 +65,7 @@ def find_word_v2(request, pattern=None, language_src_id=None, language_dst_id=No
     return JsonResponse(serializer.data, safe=False)
 
 
+@cache_page(60 * 60 * 24)
 @api_view(["GET", "PUT", "PATCH", "DELETE", "OPTIONS"])
 def word_detail(request, pk):
     try:
@@ -95,7 +103,7 @@ def mixed_word(request):
     List all words, or create a new word
     """
     if request.method == "GET":
-        word = Word.objects.filter(language__name="mahorais")
+        word = Word.objects.filter(language__name="kibushi")
         serializer = WordSerializer(word, many=True)
         _data = serializer.data
         result = list(filter(lambda x: _is_acceptable(x), _data))
