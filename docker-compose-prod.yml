@@ -11,6 +11,14 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - backend-net
+  redis:
+    image: redis:7-alpine
+    depends_on:
+      - db
+    networks:
+      - backend-net
+    ports:
+      - "6379:6379"
 
   web:
     build:
