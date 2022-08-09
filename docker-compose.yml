@@ -12,7 +12,7 @@ services:
     networks:
       - backend-net
   redis:
-    image: redis:4-alpine
+    image: redis:7-alpine
     depends_on:
       - db
     networks:
