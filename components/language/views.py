@@ -9,7 +9,6 @@ from components.language.serializers import LanguageSerializer
 from django.views.decorators.cache import cache_page
 
 
-@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def language_list(request):
     """

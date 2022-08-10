@@ -18,7 +18,6 @@ from components.word.models import Word
 from django.views.decorators.cache import cache_page
 
 
-@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def translation_list(request):
     """
@@ -59,7 +58,6 @@ def create_translation(request):
     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def find_translations(
     request, pattern=None, language_src_id=None, language_dst_id=None
@@ -76,8 +74,7 @@ def find_translations(
     return JsonResponse(serializer.data, safe=False)
 
 
-@cache_page(60 * 60 * 24)
-@api_view(["GET", "PUT", "PATCH", "DELETE", "OPTIONS"])
+@api_view(["GET", "OPTIONS"])
 def translation_detail(request, pk):
     try:
         translation = Translation.objects.get(pk=pk)
@@ -110,7 +107,6 @@ def translation_detail(request, pk):
         return JsonResponse({}, status=status.HTTP_204_NO_CONTENT)
 
 
-@cache_page(60 * 60 * 24)
 @api_view(["GET", "OPTIONS"])
 def get_translation(request, word_id=None, language_src_id=None, language_dst_id=None):
     """
