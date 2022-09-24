@@ -119,3 +119,23 @@ def get_translation(request, word_id=None, language_src_id=None, language_dst_id
     )
     serializer = GetTranslationSerializer(translation, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(["GET", "OPTIONS"])
+def get_translation_multi(request, word_id=None, language_src_id=None, language_dst_id=None):
+    """
+    List all words, or create a new word
+    """
+    data = []
+    for ident in word_id.rstrip("_").split("_") :
+        translation = Translation.objects.filter(
+            word_source_id=ident,
+            language_source_id=language_src_id,
+            language_destination_id=language_dst_id,
+        )
+        serializer = GetTranslationSerializer(translation, many=True)
+
+        if serializer.data :
+            data.append(serializer.data[0])
+
+    return JsonResponse(data, safe=False)

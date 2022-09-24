@@ -20,4 +20,9 @@ urlpatterns = [
         views.get_translation,
         name="translation-get",
     ),
+    path(
+        "api/get-translation-multi/<str:word_id>/<int:language_src_id>/<int:language_dst_id>/",
+        views.get_translation_multi,
+        name="translation-get-multi",
+    ),
 ]
