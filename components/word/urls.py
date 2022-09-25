@@ -25,4 +25,9 @@ urlpatterns = [
         views.mixed_word,
         name="mixed-word",
     ),
+    path(
+        "api/words_multi/<str:pattern>/<int:language_src_id>/<int:language_dst_id>/",
+        views.words_multi,
+        name="words-multi",
+    ),
 ]
