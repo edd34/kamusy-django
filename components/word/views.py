@@ -139,7 +139,7 @@ def _is_acceptable(_word):
 @api_view(["GET"])
 def words_multi(request, pattern=None, language_src_id=None, language_dst_id=None):
     """
-    List all words, or create a new word
+    List all predicted words
     """
 
     # Search word pretraduction
@@ -154,20 +154,27 @@ def words_multi(request, pattern=None, language_src_id=None, language_dst_id=Non
 
         if serializer.data :
             words_data.append(serializer.data[0])
+        else:
+            words_data.append({"id": None, "word_source_name":pat})
+
 
 
     # Get Translation
     translation_data = []
     for word in words_data :
-        translation = Translation.objects.filter(
-            word_source_id=word["id"],
-            language_source_id=language_src_id,
-            language_destination_id=language_dst_id,
-        )
-        serializer = GetTranslationSerializer(translation, many=True)
+        if word["id"] != None :
+            translation = Translation.objects.filter(
+                word_source_id=word["id"],
+                language_source_id=language_src_id,
+                language_destination_id=language_dst_id,
+            )
+            serializer = GetTranslationSerializer(translation, many=True)
 
-        if serializer.data :
-            translation_data.append(serializer.data[0])
+            if serializer.data :
+                translation_data.append(serializer.data[0])
+        else:
+            translation_data.append({"word_destination_name": "unknown", "word_source_name":word["word_source_name"]})
+
 
 
     return JsonResponse(translation_data, safe=False)
